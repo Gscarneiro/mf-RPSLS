@@ -1,9 +1,19 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between">
-    <button type="button" class="btn btn-danger btn-sm" (click)="leaveRoom()">
-      Leave
-    </button>
-    <h6 class="pt-2">Gabriel vs Larissa</h6>
+    <div>
+      <button type="button" class="btn btn-danger btn-sm" (click)="leaveRoom()">
+        Leave
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-outline-primary btn-sm ms-2"
+        *ngIf="currentGame.status == 3"
+        (click)="newGame()"
+      >
+        New Game
+      </button>
+    </div>
     <h6 class="pt-2">{{ message }}</h6>
   </div>
   <div class="card-body">

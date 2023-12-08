@@ -17,6 +17,7 @@ import { Room } from 'src/app/models/Room';
 })
 export class GameRoomComponent implements OnChanges {
   @Output() onPlayerMove = new EventEmitter<number>();
+  @Output() onNewGame = new EventEmitter<any>();
   @Input() currentGame: Game = new Game();
 
   currentRoom: Room = new Room();
@@ -67,6 +68,10 @@ export class GameRoomComponent implements OnChanges {
     } else {
       this.message = message;
     }
+  }
+
+  newGame() {
+    this.onNewGame.emit(current.room.id);
   }
 
   leaveRoom() {

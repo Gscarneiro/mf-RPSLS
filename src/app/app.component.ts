@@ -50,11 +50,10 @@ export class AppComponent {
     this.hubConnection?.on(
       'MakeMove',
       (type: string, status: number, playerId: string, result: string) => {
-        if (status == 4) {
+        if (status == 3) {
           current.game.result = result;
           current.game.status = status;
           this.currentGame = current.game;
-          console.log(result);
         } else {
           if (playerId == current.player.id) {
             current.game.status = status;
@@ -62,16 +61,10 @@ export class AppComponent {
         }
       }
     );
-    this.hubConnection?.on('ShowResults', (type: string, message: string) => {
-      alert(message);
+    this.hubConnection?.on('StartNewGame', (type: string, game: Game) => {
+      this.currentGame = current.game = game;
     });
-    this.hubConnection?.on(
-      'StartNewGame',
-      (type: string, message: string) => {}
-    );
   }
-
-  showResults() {}
 
   listRooms(player: Player) {
     current.player = player;
@@ -95,5 +88,9 @@ export class AppComponent {
       current.player.id,
       move
     );
+  }
+
+  newGame() {
+    this.hubConnection?.invoke('CreateNewGame', current.room.id);
   }
 }
