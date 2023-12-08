@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center">
+  <form [formGroup]="playerForm" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        id="name"
+        formControlName="name"
+        required
+      />
+      <div
+        *ngIf="
+          registerFormControl['name'].invalid &&
+          (registerFormControl['name'].dirty ||
+            registerFormControl['name'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="registerFormControl['name'].errors?.['required']">
+          Username is required.
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Start</button>
+  </form>
+</div>

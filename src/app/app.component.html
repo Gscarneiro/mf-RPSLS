@@ -1,0 +1,27 @@
+<div class="bg-light">
+  <header class="mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand mb-0 h1" href="#">
+          Rock Paper Scissors Lizard Spock
+        </a>
+      </div>
+    </nav>
+  </header>
+  <div class="container vh-100">
+    <app-player-name
+      *ngIf="showModules.showPlayerName"
+      (onUserSubmited)="listRooms($event)"
+    ></app-player-name>
+    <app-list
+      *ngIf="showModules.showRoomsList"
+      (onRoomCreate)="joinRoom($event, 'CreateRoom')"
+      (onRoomJoin)="joinRoom($event, 'JoinRoom')"
+    ></app-list>
+    <app-game-room
+      *ngIf="showModules.showGameRoom"
+      [currentGame]="currentGame"
+      (onPlayerMove)="makeMove($event)"
+    ></app-game-room>
+  </div>
+</div>

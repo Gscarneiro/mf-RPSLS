@@ -1,0 +1,94 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <button type="button" class="btn btn-danger btn-sm" (click)="leaveRoom()">
+      Leave
+    </button>
+    <h6 class="pt-2">Gabriel vs Larissa</h6>
+    <h6 class="pt-2">{{ message }}</h6>
+  </div>
+  <div class="card-body">
+    <div *ngIf="currentGame.status == 0" class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Room Id:</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentRoom.id"
+          disabled
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Room Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentRoom.name"
+          disabled
+        />
+      </div>
+    </div>
+
+    <div
+      *ngIf="currentGame.status != 0"
+      class="d-flex flex-column justify-content-center"
+    >
+      <div></div>
+      <div class="btn-group" role="group">
+        <input
+          type="radio"
+          class="btn-check"
+          name="btnradio"
+          id="rock"
+          value="0"
+          autocomplete="off"
+          (change)="makeMove($event)"
+        />
+        <label class="btn btn-outline-primary" for="rock">Rock</label>
+
+        <input
+          type="radio"
+          class="btn-check"
+          name="btnradio"
+          id="paper"
+          value="1"
+          autocomplete="off"
+          (change)="makeMove($event)"
+        />
+        <label class="btn btn-outline-primary" for="paper">Paper</label>
+
+        <input
+          type="radio"
+          class="btn-check"
+          name="btnradio"
+          id="scissors"
+          value="2"
+          autocomplete="off"
+          (change)="makeMove($event)"
+        />
+        <label class="btn btn-outline-primary" for="scissors">Scissors</label>
+
+        <input
+          type="radio"
+          class="btn-check"
+          name="btnradio"
+          id="lizard"
+          value="3"
+          autocomplete="off"
+          (change)="makeMove($event)"
+        />
+        <label class="btn btn-outline-primary" for="lizard">Lizard</label>
+
+        <input
+          type="radio"
+          class="btn-check"
+          name="btnradio"
+          id="spock"
+          value="4"
+          autocomplete="off"
+          (change)="makeMove($event)"
+        />
+        <label class="btn btn-outline-primary" for="spock">Spock</label>
+      </div>
+    </div>
+  </div>
+</div>

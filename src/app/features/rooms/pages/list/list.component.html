@@ -1,0 +1,65 @@
+<div class="row g-2 justify-content-between">
+  <div class="col-6"></div>
+  <div class="col-6">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Room's name"
+        aria-label="Room's name"
+        aria-describedby="create-group-button"
+        [(ngModel)]="roomName"
+      />
+      <div class="input-group-text">
+        <input
+          class="form-check-input mt-0"
+          type="checkbox"
+          value=""
+          [(ngModel)]="publicRoom"
+        />
+        <label class="form-check-label pl-2"> Public </label>
+      </div>
+      <button
+        type="button"
+        id="create-group-button"
+        class="btn btn-primary float-end"
+        (click)="createRoom(roomName)"
+      >
+        Create Room
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Room Name</th>
+          <th scope="col">Player Count</th>
+          <th scope="col" class="d-flex justify-content-end">
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm"
+              (click)="list()"
+            >
+              Refresh
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of roomsList">
+          <td>{{ room.name }}</td>
+          <td>{{ room.playerCount }} / 2</td>
+          <td class="d-flex justify-content-end">
+            <button class="btn btn-primary btn-sm" (click)="joinRoom(room)">
+              Join
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
